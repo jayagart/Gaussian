@@ -8,13 +8,44 @@ To write a program to find the solution of a matrix using Gaussian Elimination.
 2. Anaconda – Python 3.7 Installation / Moodle-Code Runner
 
 ## Algorithm
-1. First,we want to import numpy,then import sys,assume a variable.
-2. For gaussian elimination method, we want to make 2nd and 3rd column zero.
-3. For that we want to make a range accorting to our program output.
-4. Then print the program with correct form then the output will display.
+1. Input the number of variables:
+   - Read an integer 'n' representing the number of equations and unknowns.
 
+2. Initialize matrices:
+   - Create an augmented matrix 'a' of size n x (n+1) to store both coefficients and constants.
+   - Create a solution vector 'x' of size n and initialize all elements to 0.
+
+3. Read the augmented matrix:
+   - For each row i from 0 to n-1:
+       For each column j from 0 to n:
+           - Read the value a[i][j] (coefficients and constants).
+
+4. Forward Elimination (Gaussian Elimination):
+   - For each pivot row i from 0 to n-1:
+       a. Check if a[i][i] == 0:
+           - If true, terminate the program with an error ("Divide by zero detected").
+       b. For each row j below the pivot (from i+1 to n-1):
+           - Compute ratio = a[j][i] / a[i][i]
+           - For each column k from 0 to n:
+               - Update a[j][k] = a[j][k] - ratio * a[i][k]
+
+5. Back Substitution:
+   - Start solving from the last row up to the first.
+   - x[n-1] = a[n-1][n] / a[n-1][n-1]
+   - For i from n-2 down to 0:
+       a. Set x[i] = a[i][n]
+       b. For j from i+1 to n-1:
+           - x[i] -= a[i][j] * x[j]
+       c. x[i] /= a[i][i]
+
+6. Output the solution:
+   - Print x[0], x[1], ..., x[n-1] with two decimal places.
 ## Program:
 ```
+'''Program to solve a matrix using Gaussian elimination without partial pivoting.
+Developed by: Jayagar.T
+RegisterNumber: 212224220042
+'''
 import numpy as np
 import sys
 n=int(input())
