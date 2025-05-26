@@ -1,5 +1,6 @@
 # Gaussian Elimination
-
+## NAME: Jayagar.T
+## REG.NO: 212224220042
 ## AIM:
 To write a program to find the solution of a matrix using Gaussian Elimination.
 
